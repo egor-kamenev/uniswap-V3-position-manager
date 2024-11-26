@@ -1,0 +1,30 @@
+{
+    "name": "liquiditypositionmanager",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.6.3",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "eslint-plugin-sonarjs": "^2.0.3",
+        "eslint-plugin-unicorn": "^54.0.0",
+        "hardhat": "^2.22.15",
+        "prettier": "^3.3.3",
+        "prettier-plugin-solidity": "^1.4.1",
+        "tsconfig-paths": "^4.2.0"
+    },
+    "dependencies": {
+        "@uniswap/v3-core": "^1.0.1",
+        "@uniswap/v3-periphery": "^1.4.4",
+        "openzeppelin-contracts-5": "npm:@openzeppelin/contracts@^5.1.0"
+    }
+}

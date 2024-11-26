@@ -1,0 +1,16 @@
+{
+    "extends": "solhint:recommended",
+    "plugins": [],
+    "rules": {
+        "func-visibility": ["warn", { "ignoreConstructors": true }],
+        "compiler-version": ["error", "^0.7.6"],
+        "avoid-suicide": "error",
+        "avoid-sha3": "error",
+        "constructor-syntax": "error",
+        "func-param-name-mixedcase": "error",
+        "modifier-name-mixedcase": "error",
+        "named-parameters-mapping": false,
+        "ordering": "error",
+        "custom-errors": false
+    }
+}
