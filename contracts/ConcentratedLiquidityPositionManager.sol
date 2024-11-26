@@ -7,8 +7,6 @@ import {TransferHelper} from "@uniswap/v3-periphery/contracts/libraries/Transfer
 import {INonfungiblePositionManager} from "@uniswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol";
 import {IERC20Decimals} from "contracts/interfaces/IERC20Decimals.sol";
 import {FixedPointMathLib} from "contracts/libraries/FixedPointMathLib.sol";
-import {TickMath} from "@uniswap/v3-core/contracts/libraries/TickMath.sol";
-import {console} from "hardhat/console.sol";
 
 /// @title Concentrated Liquidity Position Manager
 /// @notice Manages liquidity positions on Uniswap V3
