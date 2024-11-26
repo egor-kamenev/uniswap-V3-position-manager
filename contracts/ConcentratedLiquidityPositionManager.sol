@@ -7,6 +7,7 @@ import {TransferHelper} from "@uniswap/v3-periphery/contracts/libraries/Transfer
 import {INonfungiblePositionManager} from "@uniswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol";
 import {IERC20Decimals} from "contracts/interfaces/IERC20Decimals.sol";
 import {FixedPointMathLib} from "contracts/libraries/FixedPointMathLib.sol";
+import {TickMath} from "@uniswap/v3-core/contracts/libraries/TickMath.sol";
 import {console} from "hardhat/console.sol";
 
 /// @title Concentrated Liquidity Position Manager
@@ -49,7 +50,7 @@ contract ConcentratedLiquidityPositionManager {
         address _poolAddress,
         DepositAmount calldata _amount,
         uint256 _width
-    ) external notZeroAddress(_poolAddress) {
+    ) external notZeroAddress(_poolAddress) returns (uint256) {
         require(_amount.token0 > 0 && _amount.token1 > 0, "zero amount");
         require(_width > 0, "zero width");
 
@@ -111,6 +112,8 @@ contract ConcentratedLiquidityPositionManager {
         );
 
         emit MintPosition(tokenId, amount0, amount1);
+
+        return tokenId;
     }
 
     /// @notice Returns the nonfungible position manager
@@ -131,7 +134,6 @@ contract ConcentratedLiquidityPositionManager {
         address token0Address,
         address token1Address
     ) internal view returns (int24, int24) {
-        // Get decimals
         uint256 token0Decimals = _getDecimals(token0Address);
         uint256 token1Decimals = _getDecimals(token1Address);
 
@@ -141,12 +143,6 @@ contract ConcentratedLiquidityPositionManager {
 
         uint256 rangeTickLower = (_width * 1e18) / amountRatioFP;
         uint256 rangeTickUpper = _width - rangeTickLower;
-
-        console.log("amountRatio", amountRatioFP);
-        console.log("tickLowerTerm", rangeTickLower);
-        console.log("tickUpperTerm", rangeTickUpper);
-        console.log("token0Decimals", token0Decimals);
-        console.log("token1Decimals", token1Decimals);
 
         return (int24(rangeTickLower), int24(rangeTickUpper));
     }

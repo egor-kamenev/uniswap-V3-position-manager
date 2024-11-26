@@ -197,9 +197,15 @@ describe("ConcentratedLiquidityPositionManger", async function () {
                 MintPositionEvent.Event
             >(liquidityManagerContract, "MintPosition(uint256,uint256,uint256)");
 
+            console.log("Minted position:", {
+                token0Amount: ethers.formatUnits(eventParameters.amount0, token0Decimals),
+                token1Amount: ethers.formatUnits(eventParameters.amount1, token1Decimals),
+                tokenId: eventParameters.tokenId,
+            });
+
             expect(eventParameters.amount0).gte((token0Amount * 95n) / 100n);
             expect(eventParameters.amount1).gte((token1Amount * 95n) / 100n);
-            expect(eventParameters.tokenId).equal(862_439);
+            expect(eventParameters.tokenId).equal(862_439n);
         });
     });
 });
